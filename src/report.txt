@@ -1,0 +1,156 @@
+I have successfully implemented all of the language's features.
+To compile the compiler you can use the make from the makefile that was provided in the skeleton
+and to run the compiler simply use ./antlr3 camle followed by the source file in the while language.
+
+The outputs produced by the emulator are as follows:
+
+ASS/MULE - ASSembler/eMUlator for Language Engineering - v2.7 - Steve Gregory
+---test1.ass ASSEMBLY BEGINS
+---test1.ass ASSEMBLY ENDS
+---test1.ass EXECUTION BEGINS
+10023
+10023
+76
+76
+---test1.ass EXECUTION ENDS
+STATISTICS:
+  23 instructions generated
+  3 registers used
+  23 instructions executed
+
+
+ASS/MULE - ASSembler/eMUlator for Language Engineering - v2.7 - Steve Gregory
+---test2.ass ASSEMBLY BEGINS
+---test2.ass ASSEMBLY ENDS
+---test2.ass EXECUTION BEGINS
+7
+-5
+28
+-91
+70
+---test2.ass EXECUTION ENDS
+STATISTICS:
+  46 instructions generated
+  7 registers used
+  46 instructions executed
+
+
+ASS/MULE - ASSembler/eMUlator for Language Engineering - v2.7 - Steve Gregory
+---test3.ass ASSEMBLY BEGINS
+---test3.ass ASSEMBLY ENDS
+---test3.ass EXECUTION BEGINS
+Enter a number: 24
+Enter a number: 53
+First is 24; second is 53
+---test3.ass EXECUTION ENDS
+STATISTICS:
+  16 instructions generated
+  3 registers used
+  16 instructions executed
+
+
+ASS/MULE - ASSembler/eMUlator for Language Engineering - v2.7 - Steve Gregory
+---test4.ass ASSEMBLY BEGINS
+---test4.ass ASSEMBLY ENDS
+---test4.ass EXECUTION BEGINS
+13
+5
+
+78bce
+---test4.ass EXECUTION ENDS
+STATISTICS:
+  148 instructions generated
+  4 registers used
+  105 instructions executed
+
+
+ASS/MULE - ASSembler/eMUlator for Language Engineering - v2.7 - Steve Gregory
+---test5.ass ASSEMBLY BEGINS
+---test5.ass ASSEMBLY ENDS
+---test5.ass EXECUTION BEGINS
+1
+WARNING: Disabled backward jump in   12: JMP 2
+3
+WARNING: Disabled backward jump in   34: JMP 24
+7
+WARNING: Disabled backward jump in   58: JMP 48
+b
+WARNING: Disabled backward jump in   89: JMP 80
+c
+WARNING: Disabled backward jump in  107: JMP 98
+d
+WARNING: Disabled backward jump in  117: JMP 108
+WARNING: Disabled backward jump in  118: JMP 90
+---test5.ass EXECUTION ENDS
+STATISTICS:
+  120 instructions generated
+  4 registers used
+  89 instructions executed
+
+
+ASS/MULE - ASSembler/eMUlator for Language Engineering - v2.7 - Steve Gregory
+---test6.ass ASSEMBLY BEGINS
+---test6.ass ASSEMBLY ENDS
+---test6.ass EXECUTION BEGINS
+truefalsefalsetruetruefalsefalsefalsetruefalsefalsefalsefalse
+---test6.ass EXECUTION ENDS
+STATISTICS:
+  162 instructions generated
+  5 registers used
+  112 instructions executed
+
+
+ASS/MULE - ASSembler/eMUlator for Language Engineering - v2.7 - Steve Gregory
+---test7.ass ASSEMBLY BEGINS
+---test7.ass ASSEMBLY ENDS
+---test7.ass EXECUTION BEGINS
+Factorial calculator
+Enter number: 7
+Factorial of 7 is 5040
+
+Exponential calculator
+Enter base: 9
+Enter exponent: 6
+9 raised to the power of 6 is 531441
+---test7.ass EXECUTION ENDS
+STATISTICS:
+  89 instructions generated
+  4 registers used
+  260 instructions executed
+
+
+ASS/MULE - ASSembler/eMUlator for Language Engineering - v2.7 - Steve Gregory
+---realnumbers.ass ASSEMBLY BEGINS
+---realnumbers.ass ASSEMBLY ENDS
+---realnumbers.ass EXECUTION BEGINS
+Enter a number:14
+896.000000
+0.006400
+Calculating the result of computing 2*3+4*5/7-2.3+9.8*6-2 : 63.357147
+---realnumbers.ass EXECUTION ENDS
+STATISTICS:
+  74 instructions generated
+  5 registers used
+  224 instructions executed
+
+
+As part of the extras I have implemented the following:
+
+  1) Register allocation using graph coloring.
+I perform liveness analysis and build a register interference graph after the program was translated into assembly
+and after that, the compiler uses the graph coloring algorithm outlined in the lectures.
+It does not include spilling variables to memory. As such my algorithm starts coloring with 3 colors
+and whenever the number of colors is insufficient it redoes the coloring algorithm with an additional color
+and whenever it finds that all registers have received a color it terminates. Therefore the algorithm
+finds the minimal number of registers required for the program to run without doing any spilling.
+
+  2) I have extended the language specification to support floating point numbers and floating point variables.
+
+  3) I have implemented error checking in order to not allow the definition of 2 variables with the same name but different types (one real one int).
+  My compiler also checks if identifiers are defined (used in an assignment or read statement) previously to being used in expressions
+  and also my compiler checks if the name of an identifier is longer than 8 characters at any point in the program.
+
+  4) I also added division ( / operator) for both real and integer numbers and logical or ( || operator).
+
+
+In total, on extras I estimate that I have spent around 15 hours.
